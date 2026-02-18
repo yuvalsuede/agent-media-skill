@@ -102,13 +102,17 @@ agent-media delete <job-id>
 agent-media whoami          # Current user
 agent-media credits         # Credit balance
 agent-media plan            # Current subscription
-agent-media subscribe       # Manage subscription
+agent-media subscribe              # Interactive plan/credits menu (waits for confirmation)
+agent-media subscribe --plan starter  # Subscribe to a plan directly
+agent-media subscribe --credits 500   # Buy a credit pack directly
+agent-media subscribe --manage        # Open Stripe billing portal
 agent-media apikey list     # List API keys
 agent-media apikey create   # Create new API key
 ```
 
 ## Tips
 
+- `agent-media subscribe` opens Stripe Checkout in the browser then polls for up to 2 minutes until the payment is confirmed, showing the new plan/credits on success.
 - Always use `--sync` when you want to wait for the result and get the output URL.
 - Use `--json` when you need to parse the output programmatically.
 - Check `agent-media credits` before generating to ensure sufficient balance.

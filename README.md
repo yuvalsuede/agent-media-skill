@@ -32,7 +32,30 @@ agent-media login
 
 ### 3. Add the skill to Claude Code
 
-Copy `SKILL.md` into your project's `.claude/skills/` directory, or reference this repo.
+Copy `SKILL.md` into your project's `.claude/skills/` directory, or reference this repo directly.
+
+## MCP Server
+
+agent-media also ships as an MCP server for direct tool integration with Claude Code and other MCP-compatible clients.
+
+```bash
+npx agent-media-mcp
+```
+
+Add to your Claude Code config (`.claude/settings.json` or `~/.claude/settings.json`):
+
+```json
+{
+  "mcpServers": {
+    "agent-media": {
+      "command": "npx",
+      "args": ["agent-media-mcp"]
+    }
+  }
+}
+```
+
+The MCP server exposes 9 tools: `generate`, `models`, `credits`, `status`, `list_jobs`, `download`, `pricing`, `cancel`, and `whoami`.
 
 ## Usage
 
@@ -42,12 +65,14 @@ Once installed, ask Claude Code things like:
 - "Create an image of a cyberpunk cityscape at sunset"
 - "Show me what models are available and their pricing"
 - "Check my credit balance"
+- "Generate 3 variations of a sunset timelapse"
 
 ## Links
 
 - [agent-media.ai](https://agent-media.ai) — Dashboard & account
-- [agent-media-cli on npm](https://www.npmjs.com/package/agent-media-cli)
 - [Documentation](https://agent-media.ai/docs)
+- [agent-media-cli on npm](https://www.npmjs.com/package/agent-media-cli)
+- [agent-media-mcp on npm](https://www.npmjs.com/package/agent-media-mcp)
 
 ## License
 

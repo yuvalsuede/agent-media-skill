@@ -1,33 +1,32 @@
-name: agent-media-generate
+name: agent-media-ugc
 args:
-  prompt:
+  script:
     default: ""
-  model:
+  actor:
     default: ""
-  duration:
-    default: "5"
+  style:
+    default: "hormozi"
+  template:
+    default: ""
 steps:
   - id: check_credits
     command: agent-media credits --json
 
-  - id: pick_model
-    command: agent-media models --json
-    stdin: $check_credits.json
+  - id: list_actors
+    command: agent-media actor list --json
 
   - id: confirm_generation
     command: |
-      echo "Model: ${model:-auto-selected}"
-      echo "Prompt: ${prompt}"
-      echo "Duration: ${duration}s"
+      echo "UGC Video Generation"
+      echo "Script: ${script}"
+      echo "Actor: ${actor:-auto-selected}"
+      echo "Style: ${style}"
+      echo "Template: ${template:-free-form}"
       echo "Ready to generate?"
     approval: required
 
   - id: generate
-    command: agent-media generate ${model} -p "${prompt}" --duration ${duration} --json
-    condition: $confirm_generation.approved
-
-  - id: poll_status
-    command: agent-media status $generate.json.job_id --json
+    command: agent-media ugc "${script}" --actor ${actor} --style ${style} ${template:+--template ${template}} --sync --json
     condition: $confirm_generation.approved
 
   - id: download

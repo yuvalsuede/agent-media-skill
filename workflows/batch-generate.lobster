@@ -1,27 +1,27 @@
-name: agent-media-batch
+name: agent-media-batch-ugc
 args:
-  prompts:
+  scripts:
     default: "[]"
-  model:
-    default: "kling3"
-  duration:
-    default: "5"
+  actor:
+    default: ""
+  style:
+    default: "hormozi"
 steps:
   - id: check_credits
     command: agent-media credits --json
 
   - id: preview_batch
     command: |
-      echo "Batch generation:"
-      echo "Model: ${model}"
-      echo "Duration: ${duration}s"
-      echo "Prompts: ${prompts}"
+      echo "Batch UGC Generation"
+      echo "Actor: ${actor}"
+      echo "Style: ${style}"
+      echo "Scripts: ${scripts}"
     approval: required
 
   - id: submit_batch
     command: |
-      for prompt in $(echo '${prompts}' | jq -r '.[]'); do
-        agent-media generate ${model} -p "$prompt" --duration ${duration} --json
+      for script in $(echo '${scripts}' | jq -r '.[]'); do
+        agent-media ugc "$script" --actor ${actor} --style ${style} --json
       done
     condition: $preview_batch.approved
 

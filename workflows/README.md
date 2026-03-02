@@ -1,30 +1,29 @@
 # agent-media Lobster Workflows
 
-Typed workflow pipelines for [OpenClaw](https://openclaw.ai)'s Lobster runtime. These workflows provide guided, multi-step media generation with approval gates.
+Typed workflow pipelines for [OpenClaw](https://openclaw.ai)'s Lobster runtime. These workflows provide guided, multi-step UGC video generation with approval gates.
 
 ## Workflows
 
-### `generate.lobster` — Guided Single Generation
+### `generate.lobster` — Guided UGC Video Generation
 
-Step-by-step generation flow:
+Step-by-step UGC video flow:
 1. Check credit balance
-2. List available models
-3. **Approval gate** — confirm model, prompt, and duration before spending credits
-4. Generate media
-5. Poll for completion
-6. Download result
+2. List available actors
+3. **Approval gate** — confirm script, actor, and style before spending credits
+4. Generate UGC video with `--sync`
+5. Download result
 
 ```json
 {
   "action": "run",
   "pipeline": "workflows/generate.lobster",
-  "argsJson": "{\"prompt\":\"a robot walking through a neon city\",\"model\":\"kling3\",\"duration\":\"5\"}"
+  "argsJson": "{\"script\":\"Stop scrolling! This product changed my morning routine.\",\"actor\":\"adaeze\",\"style\":\"hormozi\"}"
 }
 ```
 
-### `batch-generate.lobster` — Batch Generation
+### `batch-generate.lobster` — Batch UGC Generation
 
-Submit multiple prompts in one go:
+Submit multiple scripts with the same actor:
 1. Check credit balance
 2. **Approval gate** — preview the full batch before spending credits
 3. Submit all jobs in parallel
@@ -34,7 +33,7 @@ Submit multiple prompts in one go:
 {
   "action": "run",
   "pipeline": "workflows/batch-generate.lobster",
-  "argsJson": "{\"prompts\":[\"sunset over mountains\",\"robot in a garden\",\"underwater city\"],\"model\":\"veo3\",\"duration\":\"8\"}"
+  "argsJson": "{\"scripts\":[\"Script one about productivity\",\"Script two about fitness\",\"Script three about cooking\"],\"actor\":\"kemi\",\"style\":\"hormozi\"}"
 }
 ```
 

@@ -1,10 +1,16 @@
-# agent-media-skill
+# agent-media
 
-Claude Code skill for AI-powered UGC video generation via the [agent-media](https://agent-media.ai) CLI.
+Claude Code skill for AI UGC video production and media generation via the [agent-media](https://agent-media.ai) CLI.
 
 ## What it does
 
-This skill gives Claude Code the ability to generate UGC (User-Generated Content) videos on your behalf. Write a script, pick an AI actor, and get a professional talking head video with lip-sync, subtitles, and music.
+This skill gives Claude Code the ability to produce complete UGC videos, SaaS review videos, and standalone AI media on your behalf using the `agent-media` CLI.
+
+**Flagship: UGC Pipeline** — Turn a script into a complete video with AI talking heads, B-roll cutaways, voiceover, animated subtitles, and background music. One command.
+
+**SaaS Review Videos** — Provide a product name, the AI writes the script and produces a review video with an AI actor.
+
+**Standalone Generation** — 4 AI video models and 3 AI image models accessible via one CLI.
 
 ## Install
 
@@ -22,23 +28,50 @@ agent-media login
 
 ### 3. Add the skill to Claude Code
 
-Copy `SKILL.md` into your project's `.claude/skills/` directory, or reference this repo directly.
+```bash
+npx add-skill gitroomhq/agent-media
+```
+
+Or manually copy `SKILL.md` into your project's `.claude/skills/agent-media/` directory.
 
 ## Usage
 
 Once installed, ask Claude Code things like:
 
-- "Create a UGC video about our new product launch"
-- "Generate a testimonial video with actor Adaeze"
-- "Make a 30-second problem-solution video about productivity"
-- "Show me available actors"
+- "Create a 10-second UGC video from this script using actor sophia"
+- "Make a SaaS review video for Linear with an enthusiastic angle"
+- "Generate a video of a robot walking through a forest"
+- "Add hormozi-style subtitles to this video"
+- "Create a persona from my voice sample and face photo"
 - "Check my credit balance"
+
+## Quick examples
+
+```bash
+# UGC video with AI actor
+agent-media ugc "Ever wonder why some videos go viral?" --actor sophia --sync
+
+# SaaS review video
+agent-media review --saas "Linear" --actor sophia --angle enthusiastic --sync
+
+# UGC with B-roll + product screenshots
+agent-media ugc "Your script..." --actor marcus --broll --broll-images https://example.com/shot.png --sync
+
+# Standalone video
+agent-media generate video -p "A cat on the moon" --sync
+
+# Standalone image
+agent-media generate image -p "Mountain landscape" --sync
+
+# Add subtitles to any video
+agent-media subtitle ./video.mp4 --style hormozi --sync
+```
 
 ## Links
 
 - [agent-media.ai](https://agent-media.ai) — Dashboard & account
-- [Documentation](https://agent-media.ai/docs)
 - [agent-media-cli on npm](https://www.npmjs.com/package/agent-media-cli)
+- [Documentation](https://agent-media.ai/docs)
 
 ## License
 

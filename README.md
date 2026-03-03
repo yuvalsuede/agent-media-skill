@@ -38,7 +38,7 @@ Or manually copy `SKILL.md` into your project's `.claude/skills/agent-media/` di
 
 Once installed, ask Claude Code things like:
 
-- "Create a 10-second UGC video from this script using actor sophia"
+- "Create a 10-second UGC video from this script using actor sofia"
 - "Make a SaaS review video for Linear with an enthusiastic angle"
 - "Generate a video of a robot walking through a forest"
 - "Add hormozi-style subtitles to this video"
@@ -49,10 +49,10 @@ Once installed, ask Claude Code things like:
 
 ```bash
 # UGC video with AI actor
-agent-media ugc "Ever wonder why some videos go viral?" --actor sophia --sync
+agent-media ugc "Ever wonder why some videos go viral?" --actor sofia --sync
 
 # SaaS review video
-agent-media review --saas "Linear" --actor sophia --angle enthusiastic --sync
+agent-media review --saas "Linear" --actor sofia --angle enthusiastic --sync
 
 # UGC with B-roll + product screenshots
 agent-media ugc "Your script..." --actor marcus --broll --broll-images https://example.com/shot.png --sync

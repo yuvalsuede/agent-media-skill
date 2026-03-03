@@ -20,7 +20,7 @@ Produce complete UGC videos, SaaS review videos, and standalone AI media from th
 **You MUST follow ALL of these rules. Violating any rule produces a broken, unwatchable video.**
 
 ### Rule 1: ALWAYS use `--actor`
-Every UGC video MUST include `--actor <slug>`. Without an actor, there is no talking head and no lip sync — the video will just be a static image with voiceover. If the user hasn't specified an actor, ask them to pick one or default to a popular one like `sophia` or `naomi`. Run `agent-media actor list` to browse options.
+Every UGC video MUST include `--actor <slug>`. Without an actor, there is no talking head and no lip sync — the video will just be a static image with voiceover. If the user hasn't specified an actor, ask them to pick one or default to a popular one like `sofia` or `naomi`. Run `agent-media actor list` to browse options.
 
 ### Rule 2: ALWAYS count words — 2.5 words per second
 Natural speech is 2.5 words/second. Scripts MUST match the target duration:
@@ -71,7 +71,7 @@ Script → Scene splitting → TTS voiceover → AI talking heads + B-roll → C
 
 ```bash
 # ALWAYS include --actor for talking heads + lip sync
-agent-media ugc "Ever wonder why some videos go viral? Here's the secret..." --actor sophia --sync
+agent-media ugc "Ever wonder why some videos go viral? Here's the secret..." --actor sofia --sync
 
 # From file
 agent-media ugc ./script.txt --actor naomi --sync
@@ -87,14 +87,14 @@ agent-media ugc -g "A fitness tracker that monitors sleep quality" --actor marcu
 agent-media ugc "Your script here..." --actor marcus --broll --sync
 
 # With product screenshots as B-roll (REQUIRED for SaaS reviews)
-agent-media ugc "Your script here..." --actor sophia --broll --broll-images https://example.com/screenshot1.png,https://example.com/screenshot2.png --sync
+agent-media ugc "Your script here..." --actor sofia --broll --broll-images https://example.com/screenshot1.png,https://example.com/screenshot2.png --sync
 ```
 
 ### UGC Flags
 
 | Flag | Description | Example |
 |------|-------------|---------|
-| `--actor <slug>` | Library actor for talking heads | `--actor sophia` |
+| `--actor <slug>` | Library actor for talking heads | `--actor sofia` |
 | `--persona <slug>` | Custom persona (cloned voice + face) | `--persona brand-voice` |
 | `--face-url <url>` | Direct face photo URL or local file | `--face-url ./photo.png` |
 | `--voice <name>` | TTS voice | `--voice nova` |
@@ -140,7 +140,7 @@ Generate a complete SaaS review video. **ALL FOUR are required — do NOT skip a
 
 1. **Get product name** — ask user if not provided. STOP if missing.
 2. **Get 1-3 screenshot URLs** — ask user, or if they give a URL, visit the site and extract `<img>` URLs showing the product dashboard/UI. STOP if no screenshots.
-3. **Pick an actor** — ask user or default to `naomi` or `sophia`. Run `agent-media actor list` if they want to browse.
+3. **Pick an actor** — ask user or default to `naomi` or `sofia`. Run `agent-media actor list` if they want to browse.
 4. **Write the script** — MUST be ~25 words for 10s or ~37 words for 15s. Mention the product name 2-3 times. Count the words before submitting.
 5. **Run the command** with ALL required flags:
 

@@ -1,6 +1,6 @@
 ---
 name: agent-media
-description: AI UGC video production and media generation from the terminal using the `agent-media` CLI.
+description: AI UGC video production from the terminal using the `agent-media` CLI.
 homepage: https://github.com/gitroomhq/agent-media
 metadata: {"clawdbot":{"emoji":"🌎","requires":{"bins":[],"env":[]}}}
 ---
@@ -11,7 +11,7 @@ official website: https://agent-media.ai
 
 # agent-media — AI UGC Video Production & Media Generation
 
-Produce complete UGC videos, SaaS review videos, and standalone AI media from the terminal using the `agent-media` CLI.
+Produce complete UGC videos and SaaS review videos from the terminal using the `agent-media` CLI.
 
 ---
 
@@ -195,28 +195,6 @@ agent-media persona delete <persona-id>
 agent-media subtitle <video-path-or-job-id> --style hormozi --sync
 agent-media subtitle ./my-video.mp4 --style bold --sync
 ```
-
-## Standalone Media Generation
-
-Generate standalone videos and images using AI models:
-
-```bash
-# Video generation
-agent-media generate video -p "A golden retriever surfing at sunset" --sync
-
-# Image generation
-agent-media generate image -p "Mountain landscape at golden hour, photorealistic" --sync
-
-# Image-to-video
-agent-media generate video -p "Animate this scene with gentle wind" --input ./photo.jpg --sync
-
-# With options
-agent-media generate video -p "Ocean waves at sunset" -d 10 --aspect-ratio 16:9 --sync
-```
-
-- 4 AI video models — human motion, cinematic B-roll, high realism, fast generation
-- 3 AI image models — photorealism with text rendering, fast generation, creative styles
-- Duration is auto-snapped to the nearest valid value per model
 
 ## Pricing
 

@@ -205,13 +205,13 @@ agent-media subtitle ./my-video.mp4 --style bold --sync
 
 ## Pricing
 
-| Plan | Price | Monthly Credits |
-|------|-------|-----------------|
-| Creator | $39/mo | 2,500 |
-| Pro | $69/mo | 5,000 |
-| Pro Plus | $129/mo | 10,000 |
+| Plan | Price | Monthly Credits | ~10s Videos |
+|------|-------|-----------------|-------------|
+| Creator | $39/mo | 2,500 | ~3 |
+| Pro | $69/mo | 5,000 | ~6 |
+| Pro Plus | $129/mo | 10,000 | ~12 |
 
-Pay-as-you-go credit packs also available. Run `agent-media credits` to check balance.
+~800 credits per 10s video. Pay-as-you-go credit packs also available. Run `agent-media credits` to check balance.
 
 ## Job Management
 

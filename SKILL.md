@@ -33,9 +33,9 @@ If the user provides a script that is too long, YOU MUST rewrite it to fit. A 73
 ### Rule 3: SaaS reviews MUST have screenshots
 For any SaaS/product review video, you MUST provide 1-3 product screenshots via `--broll --broll-images`. Without screenshots, the video has no product context — viewers see only a talking head with no evidence of the product.
 
-`--broll-images` accepts both **HTTP/HTTPS URLs** and **local file paths** (local files are auto-uploaded). Examples:
-- `--broll-images ./screenshot1.png,./screenshot2.png` (local files)
-- `--broll-images https://example.com/img1.png,https://example.com/img2.png` (URLs)
+`--broll-images` accepts both **HTTP/HTTPS URLs** and **local file paths** (local files are auto-uploaded). Images are **semantically matched** to the most relevant broll scene based on filename — so use descriptive filenames! Examples:
+- `--broll-images ./dashboard.png,./calendar-view.png` (local files — descriptive names!)
+- `--broll-images https://example.com/pricing-page.png,https://example.com/editor.png` (URLs)
 - Mix of both works too
 
 If the user provides a product URL but no screenshots, visit the site yourself and extract image URLs from the page.
@@ -45,6 +45,13 @@ Ask the user: "What SaaS product should I review?" Do NOT proceed without it. Th
 
 ### Rule 5: Always use `--sync`
 Always append `--sync` to wait for the result and get the output URL.
+
+### Rule 6: Name screenshot files descriptively
+Broll images are **semantically matched** to scenes by filename. Use descriptive names so the AI assigns the right image to the right scene:
+- **GOOD**: `dashboard.png`, `calendar-view.png`, `post-editor.png`
+- **BAD**: `screenshot1.png`, `IMG_0042.png`, `image.png`
+
+When saving screenshots for `--broll-images`, rename them to describe what they show.
 
 ---
 
@@ -145,15 +152,15 @@ Generate a complete SaaS review video. **ALL FOUR are required — do NOT skip a
 5. **Run the command** with ALL required flags:
 
 ```bash
-# CORRECT — has actor, broll, screenshots (local files work!), short script with product name
+# CORRECT — descriptive filenames so images match the right scenes
 agent-media ugc "Postiz is the best social media tool I've used. Postiz schedules across twenty-five platforms with AI. Try Postiz today." \
   --actor naomi --duration 10 --style hormozi --broll \
   --broll-images ./postiz-dashboard.png,./postiz-calendar.png --sync
 
-# CORRECT — same with URLs instead of local files
+# CORRECT — URLs with descriptive paths work too
 agent-media ugc "Postiz is the best social media tool I've used. Postiz schedules across twenty-five platforms with AI. Try Postiz today." \
   --actor naomi --duration 10 --style hormozi --broll \
-  --broll-images "https://postiz.com/screenshot1.png,https://postiz.com/screenshot2.png" --sync
+  --broll-images "https://postiz.com/dashboard-screenshot.png,https://postiz.com/scheduling-view.png" --sync
 
 # WRONG — no actor, no screenshots, script too long
 agent-media ugc "Here's how to schedule a post in Postiz step by step..." --sync

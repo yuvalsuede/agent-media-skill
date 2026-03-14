@@ -1,4 +1,4 @@
-name: agent-media-ugc
+name: agent-media-pip-ugc
 args:
   script:
     default: ""
@@ -6,10 +6,8 @@ args:
     default: ""
   style:
     default: "hormozi"
-  template:
-    default: ""
-  pip:
-    default: ""
+  duration:
+    default: "15"
 steps:
   - id: check_credits
     command: agent-media credits --json
@@ -19,17 +17,17 @@ steps:
 
   - id: confirm_generation
     command: |
-      echo "UGC Video Generation"
+      echo "PIP UGC Video Generation"
       echo "Script: ${script}"
       echo "Actor: ${actor:-auto-selected}"
       echo "Style: ${style}"
-      echo "Template: ${template:-free-form}"
-      echo "PIP Mode: ${pip:-off}"
+      echo "Duration: ${duration}s"
+      echo "Mode: PIP (talking head + B-roll overlays)"
       echo "Ready to generate?"
     approval: required
 
   - id: generate
-    command: agent-media ugc "${script}" --actor ${actor} --style ${style} ${template:+--template ${template}} ${pip:+--pip} --sync --json
+    command: agent-media ugc "${script}" --actor ${actor} --style ${style} --duration ${duration} --pip --sync --json
     condition: $confirm_generation.approved
 
   - id: download

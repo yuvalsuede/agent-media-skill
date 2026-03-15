@@ -111,6 +111,25 @@ agent-media ugc "Three things I wish I knew before starting my business..." \
   --actor sofia --pip --duration 10 --style tiktok --sync
 ```
 
+**PIP Options:**
+
+| Flag | Values | Default | Description |
+|------|--------|---------|-------------|
+| `--pip-position <pos>` | `bottom-center`, `bottom-left`, `bottom-right` | `bottom-center` | B-roll overlay position |
+| `--pip-size <size>` | `small`, `medium`, `large` | `medium` | B-roll overlay size (40%, 55%, 70% of width) |
+| `--pip-animation <anim>` | `slide-up`, `slide-left`, `slide-right`, `fade`, `scale` | `slide-up` | Overlay entrance/exit animation |
+| `--pip-style <style>` | `none`, `rounded`, `shadow` | `none` | Overlay frame style |
+
+```bash
+# PIP with bottom-right overlay, large size, slide-left animation
+agent-media ugc "Your script here..." \
+  --actor adaeze --pip --pip-position bottom-right --pip-size large --pip-animation slide-left --sync
+
+# PIP with rounded overlay and scale animation
+agent-media ugc "Your script here..." \
+  --actor sofia --pip --pip-style rounded --pip-animation scale --duration 10 --sync
+```
+
 **PIP Rules:**
 - `--actor` is **required** (PIP needs a talking head)
 - Max duration is **15 seconds** (longer videos are split into ≤10s clips with seamless continuity)
